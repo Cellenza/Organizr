@@ -4,28 +4,16 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>@Html.DisplayFor(model => model.Title)</h2>
 
-<fieldset>
-	<legend>Idea</legend>
-	<dl>
-        <div class="totalIdea">
-		<h1>
-			@Html.DisplayFor(model => model.Title)
-		</h1>
-
-		<dd>
-			@Html.DisplayFor(model => model.Description)
-		</dd>
-            <div class="totalIdea-submitter">
-                <dd>
-                    @Html.DisplayFor(model => model.Submitted)
-                        </dd>
-                    </div>
-            </div>
-	</dl>
-</fieldset>
+<div class="totalIdea">
+  <dd>@Html.DisplayFor(model => model.Description)
+  </dd>
+  <div class="totalIdea-submitter">
+    <dd>By @Model.Submitter.UserName on @Model.Submitted.Date</dd>
+  </div>
+</div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+  @*    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |*@
     @Html.ActionLink("Back to List", "Index")
 </p>

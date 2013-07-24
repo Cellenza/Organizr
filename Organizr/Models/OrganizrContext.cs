@@ -16,7 +16,7 @@ namespace Organizr.Models
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<OrganizrContext, Configuration>());
         }
 
-        public IDbSet<Idea> Ideas { get; set; }
+        public DbSet<Idea> Ideas { get; set; }
         // This method ensures that user names are always unique
         protected override DbEntityValidationResult ValidateEntity(DbEntityEntry entityEntry, IDictionary<object, object> items)
         {
@@ -24,7 +24,7 @@ namespace Organizr.Models
             {
                 User user = entityEntry.Entity as User;
                 // Check for uniqueness of user name
-                if (user != null && Users.Where(u => u.UserName.ToUpper() == user.UserName.ToUpper()).Count() > 0)
+                if (user != null && Users.Any(u => u.UserName.ToUpper() == user.UserName.ToUpper()))
                 {
                     var result = new DbEntityValidationResult(entityEntry, new List<DbValidationError>());
                     result.ValidationErrors.Add(new DbValidationError("User", "User name must be unique."));

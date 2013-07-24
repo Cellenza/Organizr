@@ -8,6 +8,6 @@
 {
     <div class="idea">
     <div class="idea-title">@Html.ActionLink(item.Title, "Details", new {id= item.Id})</div>
-    <div class="idea-submitter">Proposed on @item.Submitted</div>
+    <div class="idea-submitter">Proposed by @item.Submitter.UserName on @item.Submitted.Date</div>
 </div>
 }

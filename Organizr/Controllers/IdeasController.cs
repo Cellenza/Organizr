@@ -21,7 +21,7 @@ namespace Organizr.Controllers
         // GET: /Ideas/
         public ActionResult Index()
         {
-            return View(context.Ideas.ToArray());
+            return View(context.Ideas.Include("Submitter").ToArray());
         }
 
         public ActionResult Create()
@@ -31,7 +31,7 @@ namespace Organizr.Controllers
 
        public ActionResult Details(int id)
         {
-            return View(context.Ideas.Single(i => i.Id == id));
+            return View(context.Ideas.Include("Submitter").Single(i => i.Id == id));
         }
 
         [HttpPost]
