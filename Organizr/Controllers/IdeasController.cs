@@ -30,8 +30,14 @@ namespace Organizr.Controllers
         }
 
        public ActionResult Details(int id)
-        {
-            return View(context.Ideas.Include("Submitter").Single(i => i.Id == id));
+       {
+           var idea = context.Ideas.Include("Submitter").SingleOrDefault(i => i.Id == id);
+           if (idea == null)
+           {
+               TempData["InfoMessage"] = "This idea does not exists yet... Do you want to create a new one?";
+               return RedirectToAction("Create");
+           };
+            return View(idea);
         }
 
         [HttpPost]
@@ -41,15 +47,14 @@ namespace Organizr.Controllers
             context.Ideas.Add(idea);
             idea.Submitter = currentUser;
             idea.Submitted = DateTime.Now;
-            var errors = context.GetValidationErrors();
-            if (errors.Any())
+            if (!ModelState.IsValid)
             {
-                return View();
+                return View(idea);
             }
             else
             {
                 context.SaveChanges();
-                return Redirect("Index");
+                return RedirectToAction("Details", new {id = idea.Id});
             }
             
         }

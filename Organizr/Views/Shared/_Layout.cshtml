@@ -31,6 +31,12 @@
         </div>
     </div>
     <div class="container">
+@if (TempData["InfoMessage"] != null)
+{
+  <div class="info">
+    @TempData["InfoMessage"]
+  </div>
+}
         @RenderBody()
         <hr />
         <footer>
