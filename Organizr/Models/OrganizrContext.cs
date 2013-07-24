@@ -5,11 +5,17 @@ using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
+using Organizr.Migrations;
 
 namespace Organizr.Models
 {
     public class OrganizrContext : DbContext
     {
+        public OrganizrContext()
+        {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<OrganizrContext, Configuration>());
+        }
+
         public IDbSet<Idea> Ideas { get; set; }
         // This method ensures that user names are always unique
         protected override DbEntityValidationResult ValidateEntity(DbEntityEntry entityEntry, IDictionary<object, object> items)
