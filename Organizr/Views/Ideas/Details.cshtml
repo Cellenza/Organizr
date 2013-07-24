@@ -1,0 +1,31 @@
+@model Organizr.Models.Idea
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+	<legend>Idea</legend>
+	<dl>
+        <div class="totalIdea">
+		<h1>
+			@Html.DisplayFor(model => model.Title)
+		</h1>
+
+		<dd>
+			@Html.DisplayFor(model => model.Description)
+		</dd>
+            <div class="totalIdea-submitter">
+                <dd>
+                    @Html.DisplayFor(model => model.Submitted)
+                        </dd>
+                    </div>
+            </div>
+	</dl>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

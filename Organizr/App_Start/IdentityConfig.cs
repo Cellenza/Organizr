@@ -29,7 +29,7 @@ namespace Organizr
 
         public static void ConfigureIdentity() 
         {
-            var dbContextCreator = new DbContextFactory<IdentityDbContext>();
+            var dbContextCreator = new DbContextFactory<OrganizrContext>();
             Secrets = new EFUserSecretStore<UserSecret>(dbContextCreator);
             Logins = new EFUserLoginStore<UserLogin>(dbContextCreator);
             Users = new EFUserStore<User>(dbContextCreator);

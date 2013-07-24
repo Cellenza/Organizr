@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Organizr.Models.Idea>
+@{
+    ViewBag.Title = "Ideas";  
+}
+
+@Html.ActionLink("I have an idea!", "Create")
+@foreach (var item in Model)
+{
+    <div class="idea">
+    <div class="idea-title">@Html.ActionLink(item.Title, "Details", new {id= item.Id})</div>
+    <div class="idea-submitter">Proposed on @item.Submitted</div>
+</div>
+}

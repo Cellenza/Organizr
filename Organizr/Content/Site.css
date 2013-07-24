@@ -33,3 +33,19 @@ input[type="checkbox"].input-validation-error {
   background-color: white;
   border-style:none;
 }
+
+.idea .idea-title{
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+}
+.idea .idea-submitter{
+    display: inline-block;
+    font-size: 10px;
+    color: grey;
+}
+.totalIdea .totalIdea-submitter{
+    display: inline-block;
+    font-size: 10px;
+    color: grey;
+    }
