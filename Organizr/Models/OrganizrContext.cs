@@ -13,6 +13,7 @@ namespace Organizr.Models
     {
         public OrganizrContext()
         {
+            this.Database.CreateIfNotExists();
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<OrganizrContext, Configuration>());
         }
 
